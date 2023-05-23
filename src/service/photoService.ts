@@ -6,16 +6,13 @@ class Photo {
 		try {
 			const token = cookies.get('jwt_authorization')
 			const data = await $host.post(
-				'/info/addPhoto',
+				`/api/albums/${albumId}/photos`,
 				{
-					imageNames: images
+					photos: images
 				},
 				{
 					headers: {
 						Authorization: `Bearer ${token}`
-					},
-					params: {
-						albumID: albumId
 					}
 				}
 			)

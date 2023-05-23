@@ -12,8 +12,7 @@ class Album {
 					Authorization: `Bearer ${token}`
 				}
 			})
-			console.log(data)
-			return data
+			return data.albums
 		} catch (e) {
 			console.log(e)
 		}
@@ -28,7 +27,7 @@ class Album {
 				{
 					albumName: name,
 					location: location,
-					date: date
+					date: new Date(date).toLocaleDateString('en-GB')
 				},
 				{
 					headers: {
@@ -36,6 +35,11 @@ class Album {
 					}
 				}
 			)
+			console.log(response)
+			if (response.status === 200) {
+				return true
+			}
+			return false
 		} catch (e) {
 			console.log(e)
 		}

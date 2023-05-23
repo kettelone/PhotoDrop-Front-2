@@ -64,8 +64,8 @@ const Dashboard = () => {
                   ? albums.map(album =>
                     <AlbumSummary
                       location={album.location}
-                      albumName={album.albumName}
-                      id={album.albumID}
+                      albumName={album.name}
+                      id={album.id}
                       key={uuidv4()}
                     />)
                   : ''

@@ -43,29 +43,29 @@ const CreateAlbum = () => {
       location && location.length > 0 &&
       date && date.length > 0) {
       setLoading(true)
-      try {
-        await album.createAlbum(name, location, date)
-        document.getElementById("success-modal")?.classList.add('show')
-        setName(undefined)
-        setLocation(undefined)
-        setDate(undefined)
-        setLoading(false)
-        setTimeout(() => {
+    
+        const response = await album.createAlbum(name, location, date)
+        if (response) {
           document.getElementById("success-modal")?.classList.add('show')
-          dispatch(close())
-        },2000)
-        setTimeout(() => {
-          dispatch(addAlbum())
-        }, 2000)
-      } catch(e) {
-        setLoading(false)
-        document.getElementById("fail-modal")?.classList.add('show')
-        setTimeout(() => {
-          document.getElementById("fail-modal")?.classList.remove('show')
-          dispatch(close())
-        }, 2000)
-      }
-      await album.createAlbum(name, location, date)
+          setName(undefined)
+          setLocation(undefined)
+          setDate(undefined)
+          setLoading(false)
+          setTimeout(() => {
+            document.getElementById("success-modal")?.classList.add('show')
+            dispatch(close())
+          }, 2000)
+          setTimeout(() => {
+            dispatch(addAlbum())
+          }, 2000)
+        } else {
+          setLoading(false)
+          document.getElementById("fail-modal")?.classList.add('show')
+          setTimeout(() => {
+            document.getElementById("fail-modal")?.classList.remove('show')
+            dispatch(close())
+          }, 2000)
+        }
     }
   }
   const closeModal = () => {
