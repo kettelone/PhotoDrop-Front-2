@@ -65,16 +65,14 @@ class Photo {
 				.filter((el) => el.length > 1)
 			console.log(photoID, phoneArr)
 			const response = await $host.post(
-				'/info/addUsers',
+				'/api/albums/photos/person',
 				{
-					phones: phoneArr
+					phones: phoneArr,
+					photoID: photoID
 				},
 				{
 					headers: {
 						Authorization: `Bearer ${token}`
-					},
-					params: {
-						photoID: photoID
 					}
 				}
 			)

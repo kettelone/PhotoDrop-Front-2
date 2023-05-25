@@ -76,15 +76,15 @@ const uppy = new Uppy({
       }
     }
   })
-uppy.on('upload-success', async (file, response) => {
-  if (file) {
-    const { personPhone, key } = file.meta
-    if (typeof key === 'string' && typeof personPhone === 'string') {
-      const photoId = key.substring(key.lastIndexOf('/') + 1)
-      const response = await photoService.addPerson(photoId, personPhone)
-    }
-  }
-});
+// uppy.on('upload-success', async (file, response) => {
+//   if (file) {
+//     const { personPhone, key } = file.meta
+//     if (typeof key === 'string' && typeof personPhone === 'string') {
+//       const photoId = key.substring(key.lastIndexOf('/') + 1)
+//       const response = await photoService.addPerson(photoId, personPhone)
+//     }
+//   }
+// });
 
 
 const OneAlbum = () => {
