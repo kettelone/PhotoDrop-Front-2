@@ -77,7 +77,6 @@ class Photo {
 					}
 				}
 			)
-			console.log({ response })
 			return response
 		} catch (e) {}
 	}

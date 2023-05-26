@@ -71,11 +71,8 @@ uppy.on('upload-success', async (file, response) => {
 
   if (file) {
     const { personPhone} = file.meta
-    console.log({ personPhone })
-    console.log({photoId})
     if (typeof photoId === 'string' && typeof personPhone === 'string') {
       const response = await photoService.addPerson(photoId, personPhone)
-      console.log(response)
     }
   }
 });
