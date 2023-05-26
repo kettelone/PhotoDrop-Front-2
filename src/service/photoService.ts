@@ -59,16 +59,17 @@ class Photo {
 	public async addPerson(photoID: string, phoneNumbers: string) {
 		try {
 			const token = cookies.get('jwt_authorization')
-			const phoneArr = phoneNumbers
+			let phoneArr = phoneNumbers
 				.trim()
 				.split(/[^\d]+/)
 				.filter((el) => el.length > 1)
-			console.log(photoID, phoneArr)
+
+			phoneArr = phoneArr.map((el) => `+${el}`)
 			const response = await $host.post(
 				'/api/albums/photos/person',
 				{
-					phones: phoneArr,
-					photoID: photoID
+					phoneNumbers: phoneArr,
+					photoId: photoID
 				},
 				{
 					headers: {
